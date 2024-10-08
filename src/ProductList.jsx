@@ -280,42 +280,18 @@ function ProductList() {
                 <div className="product-grid">
                     {plantsArray.map((categoryItem, categoryIndex) => (
                         <div key={categoryIndex}>
-
-                            <h2>{categoryItem.category}</h2>
-
-
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                                {categoryItem.plants.map((plant, plantIndex) => (
-                                    <div
-                                        key={plantIndex}
-                                        style={{
-                                            border: '1px solid #ddd',
-                                            borderRadius: '8px',
-                                            padding: '16px',
-                                            maxWidth: '250px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-
-                                        <img
-                                            src={plant.image}
-                                            alt={plant.name}
-                                            style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-                                        />
-
-
-                                        <h3>{plant.name}</h3>
-
-
-                                        <p>{plant.description}</p>
-
-
-                                        <p><strong>Cost:</strong> {plant.cost}</p>
-                                        <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
-                                    </div>
-                                ))}
+                        <h1><div>{categoryItem.category}</div></h1>
+                        <div className="product-list">
+                            {categoryItem.plants.map((plant, plantIndex) => (
+                            <div className="product-card" key={plantIndex}>
+                                <img className="product-image" src={plant.image} alt={plant.name} />
+                                <div className="product-title">{plant.name}</div>
+                                {/*Similarly like the above plant.name show other details like description and cost*/}
+                                <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                             </div>
+                            ))}
                         </div>
+                    </div>
                     ))}
                     <div>
 
