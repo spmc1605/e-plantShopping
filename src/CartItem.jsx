@@ -8,13 +8,15 @@ const CartItem = ({ onContinueShopping }) => {
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = (cant, item) => {
-    return cart.reduce((total, item) => total + (item.quantity * parseFloat(item.cost.slice(1))), 0);
+ const calculateTotalAmount = () => {
+    return cart.reduce((total, item) => total + (item.quantity * parseFloat(item.cost.slice(1))), 0).toFixed(2);
   };
 
-  const handleContinueShopping = (e) => {
-     setShowCart(false); 
-    setShowPlants(true); 
+   const handleContinueShopping = (e) => {
+    e.preventDefault();
+    if (onContinueShopping) {
+      onContinueShopping(); // Call the function passed as a prop
+    }
   };
 const handleCheckoutShopping = (e) => {
   alert('Functionality to be added for future reference');
